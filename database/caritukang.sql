@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2025 at 06:43 AM
+-- Generation Time: May 02, 2026 at 07:35 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -79,6 +79,7 @@ CREATE TABLE `booking` (
   `tanggal_booking` datetime NOT NULL,
   `harga_layanan` varchar(50) NOT NULL,
   `foto_kendala` varchar(200) NOT NULL,
+  `status_booking` enum('booking','batal','selesai','') NOT NULL,
   `wa_booking` varchar(20) NOT NULL,
   `deskripsi_booking` text NOT NULL,
   `id_customer` int(11) DEFAULT NULL,
@@ -89,21 +90,23 @@ CREATE TABLE `booking` (
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`id_booking`, `nama_booking`, `alamat_lengkap`, `kabupaten/kota`, `kecamatan`, `tanggal_booking`, `harga_layanan`, `foto_kendala`, `wa_booking`, `deskripsi_booking`, `id_customer`, `id_keahlian`) VALUES
-(21, 'bambang pangkas', 'jalan jalan rt1 /rw1', 'ngalor', 'depok', '2025-01-20 00:00:00', '', 'artikel_tukang_4.jpg', '081234567898', 'kondisi keramik rusak parah dan meneglupas sehingga perlu di perbaiki ', 19, 6),
-(23, 'bambang pangkas', 'depan gang hijau rt1/rw1 ', 'ngalor', 'depok', '2025-01-21 00:00:00', '', 'artikel_tukang_21.jpg', '081234567898', 'terjadi kerusakan listrik di rumah dan sering mengalami konslet', 19, 1),
-(26, 'Dzaky Hamid', 'gang dero rt10 rw 10 depan gang hijau', 'Sleman', 'Depok', '2025-01-20 00:00:00', '', 'listrik.jpeg', '081234567898', 'gardu listrik roboh akibat angin kencang', 17, 1),
-(29, 'junaedi', 'Jalan dero rt1 /rw 1depan gang mesjid', 'Sleman', 'Depok', '2025-01-21 00:00:00', '', 'listrik2.jpeg', '08229922876222', 'gardu listrik roboh di depan rumah', 21, 1),
-(30, 'Dzaky Hamid', 'depan indomaret rt1 rw 2', 'bantul', 'ngaklik', '2025-05-03 00:00:00', '', 'listrik6.jpeg', '081234567898', 'testing', 17, 1),
-(31, 'Dzaky Hamid', 'sads', 'sadasd', 'asdas', '2025-06-25 00:00:00', '160000', '', '081234567898', 'sdsd', 17, 1),
-(32, 'Dzaky Hamid', 'sds', 'sadas', 'sdssd', '2025-06-25 00:00:00', '200000', '', '081234567898', 'sdasd', 17, 9),
-(33, 'Dzaky Hamid', 'as', 'asd', 'asd', '2025-06-25 00:00:00', '160000', '', '081234567898', 'sadsa', 17, 1),
-(34, 'Dzaky Hamid', 'sdsd', 'sadas', 'sdsd', '2025-06-25 00:00:00', '160000', '', '081234567898', 'sadasd', 17, 1),
-(35, 'Dzaky Hamid', 'asdasd', 'sads', 'sadsd', '2025-06-25 00:00:00', '160000', '', '081234567898', 'sasd', 17, 1),
-(43, 'Dzaky Hamid', 'sdsd', 'sds', 'sdsds', '2025-06-25 00:00:00', '200000', '', '081234567898', 'sdsdsd', 17, 9),
-(44, 'Dzaky Hamid', 'g', 's', 'f', '2025-06-25 00:00:00', '160000', '', '081234567898', 'h', 17, 1),
-(45, 'Dzaky Hamid', 'assasa', 'sa', 'sd', '2025-06-26 00:00:00', '160000', '', '081234567898', 'dsfs', 17, 1),
-(46, 'Dzaky Hamid', 'sdsd', 'sdasd', 'sdsd', '2025-06-30 00:00:00', '250000', '', '081234567898', 'fdfgdf', 17, 2);
+INSERT INTO `booking` (`id_booking`, `nama_booking`, `alamat_lengkap`, `kabupaten/kota`, `kecamatan`, `tanggal_booking`, `harga_layanan`, `foto_kendala`, `status_booking`, `wa_booking`, `deskripsi_booking`, `id_customer`, `id_keahlian`) VALUES
+(21, 'bambang pangkas', 'jalan jalan rt1 /rw1', 'ngalor', 'depok', '2025-01-20 00:00:00', '', 'artikel_tukang_4.jpg', 'booking', '081234567898', 'kondisi keramik rusak parah dan meneglupas sehingga perlu di perbaiki ', 19, 6),
+(23, 'bambang pangkas', 'depan gang hijau rt1/rw1 ', 'ngalor', 'depok', '2025-01-21 00:00:00', '', 'artikel_tukang_21.jpg', 'selesai', '081234567898', 'terjadi kerusakan listrik di rumah dan sering mengalami konslet', 19, 1),
+(26, 'Dzaky Hamid', 'gang dero rt10 rw 10 depan gang hijau', 'Sleman', 'Depok', '2025-01-20 00:00:00', '', 'listrik.jpeg', 'booking', '081234567898', 'gardu listrik roboh akibat angin kencang', 17, 1),
+(29, 'junaedi', 'Jalan dero rt1 /rw 1depan gang mesjid', 'Sleman', 'Depok', '2025-01-21 00:00:00', '', 'listrik2.jpeg', 'batal', '08229922876222', 'gardu listrik roboh di depan rumah', 21, 1),
+(30, 'Dzaky Hamid', 'depan indomaret rt1 rw 2', 'bantul', 'ngaklik', '2025-05-03 00:00:00', '', 'listrik6.jpeg', 'selesai', '081234567898', 'testing', 17, 1),
+(31, 'Dzaky Hamid', 'sads', 'sadasd', 'asdas', '2025-06-25 00:00:00', '160000', '', 'booking', '081234567898', 'sdsd', 17, 1),
+(32, 'Dzaky Hamid', 'sds', 'sadas', 'sdssd', '2025-06-25 00:00:00', '200000', '', 'booking', '081234567898', 'sdasd', 17, 9),
+(33, 'Dzaky Hamid', 'as', 'asd', 'asd', '2025-06-25 00:00:00', '160000', '', 'booking', '081234567898', 'sadsa', 17, 1),
+(34, 'Dzaky Hamid', 'sdsd', 'sadas', 'sdsd', '2025-06-25 00:00:00', '160000', '', 'booking', '081234567898', 'sadasd', 17, 1),
+(35, 'Dzaky Hamid', 'asdasd', 'sads', 'sadsd', '2025-06-25 00:00:00', '160000', '', 'selesai', '081234567898', 'sasd', 17, 1),
+(43, 'Dzaky Hamid', 'sdsd', 'sds', 'sdsds', '2025-06-25 00:00:00', '200000', '', '', '081234567898', 'sdsdsd', 17, 9),
+(44, 'Dzaky Hamid', 'g', 's', 'f', '2025-06-25 00:00:00', '160000', '', '', '081234567898', 'h', 17, 1),
+(45, 'Dzaky Hamid', 'assasa', 'sa', 'sd', '2025-06-26 00:00:00', '160000', '', '', '081234567898', 'dsfs', 17, 1),
+(46, 'Dzaky Hamid', 'sdsd', 'sdasd', 'sdsd', '2025-06-30 00:00:00', '250000', '', '', '081234567898', 'fdfgdf', 17, 2),
+(47, 'bambang pangkas', 'Bali', 'Lombok', 'Depok', '2026-06-04 00:00:00', '250000', 'Background_1.png', '', '081234567898', 'asdasdasdasd', 19, 2),
+(48, 'bambang pangkas', 'sdfsdf', 'asdfasefsd', 'Depsdfsdfsdok', '2026-06-06 00:00:00', '275000', '2026-Formula1-Red-Bull-Racing-RB22-001-1440w_(1).jpg', 'booking', '081234567898', 'fgdhfghfghgh', 19, 12);
 
 -- --------------------------------------------------------
 
@@ -241,7 +244,8 @@ INSERT INTO `transaksi` (`id_transaksi`, `id_booking`, `kode_pembayaran`, `total
 (14, 43, 'CT-1750779761', '200000', '0000-00-00 00:00:00', 'pending'),
 (15, 44, 'CT-685acac0d23b6', '160000', '2025-06-24 17:56:48', 'pending'),
 (16, 45, 'CT-1750782129', '160000', '2025-06-24 18:22:09', 'pending'),
-(17, 46, 'CT-6860c32e2f8f5', '250000', '2025-06-29 06:38:06', 'pending');
+(17, 46, 'CT-6860c32e2f8f5', '250000', '2025-06-29 06:38:06', 'pending'),
+(18, 47, 'CT-69f631e8e0ddc', '250000', '2026-05-02 19:18:32', 'pending');
 
 -- --------------------------------------------------------
 
@@ -343,13 +347,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `artikel`
 --
 ALTER TABLE `artikel`
-  MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id_booking` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id_booking` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -379,7 +383,7 @@ ALTER TABLE `peran`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `ulasan`
