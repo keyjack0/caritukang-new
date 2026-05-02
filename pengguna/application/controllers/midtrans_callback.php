@@ -21,7 +21,7 @@ class Midtrans_callback extends CI_Controller {
 
         // Konfigurasi Midtrans
         \Midtrans\Config::$isProduction = false; // Ganti ke TRUE jika di lingkungan produksi
-        \Midtrans\Config::$serverKey = 'SB-Mid-server-s9KS6RQGKddSay83d438rUiV'; // Server Key Midtrans Anda
+        \Midtrans\Config::$serverKey = 'SB-Mid-server-ganti sesuai dengan server key Anda'; // Server Key Midtrans Anda
 
         // Membuat objek notifikasi dari Midtrans
         $notif = new \Midtrans\Notification();
